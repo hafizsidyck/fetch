@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        /* body {
+            width: 400px;
+    margin: 15px;
+    padding: 15px;
+} */
+
+th, td {
+    border: 2px solid black;
+    text-align: center;
+}
+
+table {
+    border: 2px solid black;
+}
+
+form {
+    border: 2px solid;
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    
+}
+
+input select {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 2px; 
+    margin-bottom: 10px;
+}
+    </style>
+
+    <h1>Ajouter les matières et les notes</h1>
+
+
+    <form id="form">
+
+
+            <select required id="matières">
+                <option value="" hidden>Sélectionner une matière</option>
+                <option value="Maths">Maths</option>
+                <option value="Physique">Physique</option>
+                <option value="Chimie">Chimie</option>
+                <option value="Francais">Francais</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Science"></option>
+            </select>
+
+        <!-- <input id="matiére" type="number" placeholder="saisir la matiére"></input> -->
+        <input id="NoteElevée" type="number" placeholder="Note plus élevée"></input>
+        <input id="Moyenne" type="number" placeholder="Note Moyenne"></input>
+        <input id="MaNote" type="number" placeholder="Ma note"></input>
+        <button id="valider">valider</button>
+    </form>
+    <button id="">calculer les bonus</button>
+    <pre id="pre"></pre>
+    
+   <table>
+    <thead>
+        <tr>
+            <th>Matière</th>
+            <th>Note la plus élevée</th>
+            <th>Moyenne de la classe</th>
+            <th>Ma note</th>
+            <th>Bonus</th>
+        </tr>
+    </thead>
+   </table>
+
+   <script>
+    const matières = []
+    const form = document.getElementById('form')
+    const matiére = document.getElementById('matière')
+    const NoteElevée = document.getElementById('note élevée')
+    const MaNote = document.getElementById('MaNote')
+    const Moyenne = document.getElementById('Moyenne')
+    const valider = document.getElementById('valider')
+    const pre = document.getElementById('pre')
+
+    form.addEventListener('submit', function (e) {
+        let item = {
+            // matiére:matiére.value,
+            Moyenne:Moyenne.value,
+            MaNote:MaNote.value,
+            Bonus:0
+        }
+        matières.push(item)
+        matiére.value = ''
+        Moyenne.value = ''
+        MaNote.value = ''
+    })
+    
+
+   </script>
+</body>
+</html>

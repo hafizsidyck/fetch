@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/style.css" />
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NOM</th>
+          <th>PRENOM</th>
+          <th>EMAIL</th>
+        </tr>
+      </thead>
+      <tbody id="tb"></tbody>
+    </table>
+
+    <script>
+      async function getData() {
+        try {
+          const reponse = await fetch("./json/posts.json");
+          if (reponse.ok) {
+            console.log(reponse);
+            let data = await reponse.json();
+            console.log(data);
+            data.map((post) => {
+              let tr = document.createElement("tr");
+              let id = document.createElement("td");
+              let nom = document.createElement("td");
+              let prenom = document.createElement("td");
+              let email = document.createElement("td");
+
+              id.textContent = post.id;
+              nom.textContent = post.last_name;
+              prenom.textContent = post.first_name;
+              email.textContent = post.email;
+
+              tr.appendChild(id);
+              tr.appendChild(nom);
+              tr.appendChild(prenom);
+              tr.appendChild(email);
+              document.getElementById("tb").appendChild(tr);
+            });
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      getData();
+    </script>
+  </body>
+</html>
