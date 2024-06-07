@@ -39,6 +39,8 @@
               prenom.textContent = post.first_name;
               email.textContent = post.email;
 
+              function createRow(text1, text2, text3, text4) {
+                const tr = document.createElement("tr")
               tr.appendChild(id);
               tr.appendChild(nom);
               tr.appendChild(prenom);
@@ -51,6 +53,38 @@
         }
       }
       getData();
+
+
+        function createTD(text) {
+          let td = document.createElement("td");
+          td.textContent = text;
+          return td;
+          let td = createTD(text1);
+          const td2 = createTD(text2);
+          const td3 = createTD(text3);
+          const td4 = createTD(text4);
+          tr.appendChild(td)
+          tr.appendChild(td2)
+          tr.appendChild(td3)
+          tr.appendChild(td4)
+          table.appendChild(tr)
+
+        }
+  
+        function asyncCall() {
+        try {
+          const response = await fetch("./posts.json")
+          console.log(reponse);
+          const data = await reponse.json()
+          for(let item of data) {
+            createRow(item.id, item.first_name, item.last_name, item.email)
+          }
+
+        } catch (e) {console.log(e)};
+
+      }
+
+      asyncCall()
     </script>
   </body>
 </html>
